@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 120 14% 100%;
+    --foreground: 234 29% 14%;
+    --card: 120 14% 97%;
+    --card-foreground: 234 29% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 234 29% 14%;
+    --primary: 149 62% 26%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 20 96% 46%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 120 14% 94%;
+    --muted-foreground: 215 14% 34%;
+    --accent: 145 25% 94%;
+    --accent-foreground: 234 29% 14%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 27 90% 67%;
+    --warning-foreground: 234 29% 14%;
+    --safe: 153 44% 30%;
+    --safe-foreground: 0 0% 100%;
+    --border: 210 24% 87%;
+    --input: 210 24% 87%;
+    --ring: 149 62% 26%;
+    --radius: 0.75rem;
+    --sidebar-background: 145 25% 95%;
+    --sidebar-foreground: 234 29% 14%;
+    --sidebar-primary: 149 62% 26%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 145 25% 90%;
+    --sidebar-accent-foreground: 234 29% 14%;
+    --sidebar-border: 210 24% 87%;
+    --sidebar-ring: 149 62% 26%;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --utility-bar: 149 62% 26%;
+    --footer-bg: 150 30% 12%;
+  }
+
+  .dark {
+    --background: 150 25% 4%;
+    --foreground: 120 47% 93%;
+    --card: 150 25% 8%;
+    --card-foreground: 120 47% 93%;
+    --popover: 150 25% 8%;
+    --popover-foreground: 120 47% 93%;
+    --primary: 152 100% 50%;
+    --primary-foreground: 150 25% 4%;
+    --secondary: 20 100% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 150 20% 12%;
+    --muted-foreground: 200 10% 53%;
+    --accent: 150 30% 15%;
+    --accent-foreground: 120 47% 93%;
+    --destructive: 0 100% 59%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 42 100% 50%;
+    --warning-foreground: 0 0% 0%;
+    --safe: 145 100% 39%;
+    --safe-foreground: 0 0% 100%;
+    --border: 157 30% 17%;
+    --input: 157 30% 17%;
+    --ring: 152 100% 50%;
+    --sidebar-background: 150 25% 6%;
+    --sidebar-foreground: 120 47% 93%;
+    --sidebar-primary: 152 100% 50%;
+    --sidebar-primary-foreground: 150 25% 4%;
+    --sidebar-accent: 150 30% 15%;
+    --sidebar-accent-foreground: 120 47% 93%;
+    --sidebar-border: 157 30% 17%;
+    --sidebar-ring: 152 100% 50%;
+    --utility-bar: 150 30% 6%;
+    --footer-bg: 150 30% 6%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    transition: background-color 300ms ease,
+      background 300ms ease,
+      color 300ms ease,
+      border-color 300ms ease,
+      box-shadow 300ms ease !important;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card rounded-lg shadow-sm;
+    border: 1px solid hsl(var(--border));
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .glass-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  .dark .glass-card {
+    background: hsla(150, 25%, 8%, 0.8);
+    backdrop-filter: blur(12px);
+    border-color: rgba(0, 255, 136, 0.15);
+  }
+  .dark .glass-card:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+  }
+  .glass-nav {
+    @apply bg-background shadow-sm;
+    border-bottom: 1px solid hsl(var(--border));
+    transition: background-color 0.3s ease;
+  }
+  .dark .glass-nav {
+    background: hsla(150, 25%, 4%, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom-color: rgba(0, 255, 136, 0.1);
+  }
+  .font-heading { font-family: var(--font-heading); }
+  .font-mono { font-family: var(--font-mono); }
+  .font-body { font-family: var(--font-body); }
+  .text-glow { text-shadow: none; }
+  .dark .text-glow { text-shadow: 0 0 20px rgba(0, 255, 136, 0.4); }
+  .glow-border { border: 1px solid hsl(var(--border)); }
+  .dark .glow-border { border-color: rgba(0, 255, 136, 0.2); box-shadow: 0 0 15px rgba(0, 255, 136, 0.05); }
+  .fire-pulse { animation: firePulse 2s ease-in-out infinite; }
+  .live-dot { animation: livePulse 2s ease-in-out infinite; }
+  .ticker-scroll { animation: tickerScroll 60s linear infinite; }
+  .stat-pulse { animation: statPulse 3s ease-in-out infinite; }
+  .card-hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .card-hover-lift:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); }
+  .dark .card-hover-lift:hover { box-shadow: 0 8px 30px rgba(0, 255, 136, 0.08); }
+  .sidebar-item {
+    @apply px-3 py-2 rounded-md text-sm transition-all duration-200 flex items-center gap-2;
+    border-left: 3px solid transparent;
+  }
+  .sidebar-item:hover {
+    @apply bg-accent text-primary;
+    border-left-color: hsl(var(--primary));
+  }
+}
+
+@keyframes firePulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.5); opacity: 0.3; }
+}
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.2); }
+}
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes statPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+@keyframes heroGradient {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 0%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 50%; }
+}
+.hero-gradient-bg {
+  background: linear-gradient(135deg, #1a6b3c, #2d6a4f, #e85d04, #d62828, #1a6b3c);
+  background-size: 400% 400%;
+  animation: heroGradient 15s ease infinite;
+}
+.leaflet-container { background: hsl(0, 0%, 95%) !important; font-family: var(--font-body) !important; }
+.dark .leaflet-container { background: hsl(150, 25%, 4%) !important; }
+.leaflet-control-zoom { border: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important; border-radius: 8px !important; overflow: hidden; }
+.leaflet-control-zoom-in, .leaflet-control-zoom-out { width: 36px !important; height: 36px !important; line-height: 36px !important; font-size: 18px !important; font-weight: 300 !important; color: hsl(149,62%,26%) !important; background: white !important; border: none !important; display: flex !important; align-items: center !important; justify-content: center !important; transition: background 200ms ease !important; }
+.leaflet-control-zoom-in:hover, .leaflet-control-zoom-out:hover { background: hsl(149,62%,26%) !important; color: white !important; }
+.dark .leaflet-control-zoom-in, .dark .leaflet-control-zoom-out { background: hsla(150,25%,8%,0.9) !important; color: hsl(152,100%,50%) !important; }
+.dark .leaflet-control-zoom-in:hover, .dark .leaflet-control-zoom-out:hover { background: hsl(152,100%,50%) !important; color: hsl(150,25%,4%) !important; }
+.leaflet-control-attribution { display: none !important; }
+.fire-marker-pulse { border-radius: 50%; animation: fireMarkerPulse 2s ease-in-out infinite; }
+@keyframes fireMarkerPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.6); }
+  50% { box-shadow: 0 0 0 15px rgba(255, 107, 53, 0); }
+}
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* Infinite Scroll for Species Carousel */
+@keyframes infiniteScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-infinite-scroll {
+  display: flex !important;
+  width: max-content !important;
+  animation: infiniteScroll 60s linear infinite;
+}
+
+.pause-on-hover:hover {
+  animation-play-state: paused;
+}
+
+.animation-paused {
+  animation-play-state: paused;
+}
