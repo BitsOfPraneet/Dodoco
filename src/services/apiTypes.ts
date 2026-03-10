@@ -39,6 +39,7 @@ export interface FireEvent {
   trendPercent: number;
   startTime: string;
   windSpeed: number;
+  windDeg: number;
   duration: number;
 }
 
